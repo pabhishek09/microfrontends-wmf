@@ -1,0 +1,24 @@
+{
+  "name": "microfrontends-wmf",
+  "version": "1.0.0",
+  "description": "App using webpack-module-federation plugin to implement microfrontend app",
+  "main": "app-shell/index.js",
+  "repository": "https://github.com/pabhishek09/microfrontends-wmf.git",
+  "author": "pabhishek.2009@gmail.com",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "app-shell",
+    "remote-app-1",
+    "remote-app-2"
+  ],
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  },
+  "scripts": {
+    "dev:app-shell": "yarn workspace app-shell run dev",
+    "dev:remote-app-1": "yarn workspace remote-app-1 run dev",
+    "dev:remote-app-2": "yarn workspace remote-app-2 run dev",
+    "dev": "concurrently \"yarn:dev:remote-app-1\" \"yarn:dev:remote-app-2\" \"yarn:dev:app-shell\""
+  }
+}
